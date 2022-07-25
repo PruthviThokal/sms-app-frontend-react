@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams, useNavigate, NavLink } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './Client.css';
 import { Button } from '@mui/material';
@@ -10,7 +10,6 @@ const ClientProfile = () => {
     const [inputs, setInputs] = useState({});
     const [test, setTest] = useState();
     const id = useParams().id;
-    var d;
     useEffect(() => {
         const fetchHandler = async () => {
             await axios.get(`https://aqueous-retreat-27884.herokuapp.com/api/client/${id}`)
@@ -19,7 +18,7 @@ const ClientProfile = () => {
         fetchHandler();
     }, [id]);
 
-    const { name, image, message, number } = inputs;
+    const { name, image, number } = inputs;
 
     const sendRequest = async () => {
         await axios.post(`https://aqueous-retreat-27884.herokuapp.com/api/client/sendsms`, {
@@ -40,7 +39,7 @@ const ClientProfile = () => {
         <div className="topp">
             <div>
                 <div className="cardd">
-                    <img src={image} />
+                    <img src={image} alt="description" />
                     <h3>Client Name is - {name}</h3>
                     <h3>Clinet Number is - {number}</h3>
                 </div>
