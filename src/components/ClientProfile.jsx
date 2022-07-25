@@ -29,6 +29,7 @@ const ClientProfile = () => {
             toast.success("SMS send successfully.")
             history("/sms/history")
         }).catch(err => {
+            console.log("eeeee", err);
             toast.error("Something went wrong")
         });
     }
